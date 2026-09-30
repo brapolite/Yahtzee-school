@@ -1,0 +1,35 @@
+body {
+    background: linear-gradient(to left, #eb2525, #f89f9f);
+    color: #09012e;
+    font-family: 'Mochiy Pop One', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    text-align: center; /* centers text, buttons, inputs */
+}
+
+/* Center tables */
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+/* Center sections */
+section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Make inputs & buttons look centered */
+input, button {
+    margin: 6px auto;
+    display: block;
+}
+
+/* Optional: limit width so it looks centered */
+#yahtzee-scoresheet {
+    max-width: 900px;
+}
+
+

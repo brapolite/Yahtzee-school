@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahtzee 2.0</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h2>Yahtzee 2.0</h2>
+
+    <input id="name" placeholder="Your name">
+    <button onclick="join()">Join</button>
+
+    <p id="turn"></p>
+
+    <div id="board"></div>
+
+    <section id="yahtzee-scoresheet">
+        <h2>Feuille de pointage (2 Players)</h2>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Categorie (Cliquez pour choisir)</th>
+      <th>Premier Joueur</th>
+      <th>Deuxième joueur</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th colspan="3">Section du Haut</th>
+    </tr>
+
+    <tr>
+      <td class="category-label">Uns</td>
+      <td><input id="p1-ones" type="number" min="0" max="5"></td>
+      <td><input id="p2-ones" type="number" min="0" max="5"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Deux</td>
+      <td><input id="p1-twos" type="number" min="0" max="10"></td>
+      <td><input id="p2-twos" type="number" min="0" max="10"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Trois</td>
+      <td><input id="p1-threes" type="number" min="0" max="15"></td>
+      <td><input id="p2-threes" type="number" min="0" max="15"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Quatres</td>
+      <td><input id="p1-fours" type="number" min="0" max="20"></td>
+      <td><input id="p2-fours" type="number" min="0" max="20"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Cinqs</td>
+      <td><input id="p1-fives" type="number" min="0" max="25"></td>
+      <td><input id="p2-fives" type="number" min="0" max="25"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Six</td>
+      <td><input id="p1-sixes" type="number" min="0" max="30"></td>
+      <td><input id="p2-sixes" type="number" min="0" max="30"></td>
+    </tr>
+
+    <tr>
+      <td><strong>Bonus du haut (35 si ≥ 63)</strong></td>
+      <td><input id="p1-upper-bonus" type="number" readonly></td>
+      <td><input id="p2-upper-bonus" type="number" readonly></td>
+    </tr>
+
+    <tr>
+      <th colspan="3">Section du Bas</th>
+    </tr>
+
+    <tr>
+      <td class="category-label">Brelan</td>
+      <td><input id="p1-3kind" type="number"></td>
+      <td><input id="p2-3kind" type="number"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Carré</td>
+      <td><input id="p1-4kind" type="number"></td>
+      <td><input id="p2-4kind" type="number"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Full</td>
+      <td><input id="p1-full" type="number" min="0" max="25"></td>
+      <td><input id="p2-full" type="number" min="0" max="25"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Petite Suite</td>
+      <td><input id="p1-small-straight" type="number" min="0" max="30"></td>
+      <td><input id="p2-small-straight" type="number" min="0" max="30"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Grande Suite</td>
+      <td><input id="p1-large-straight" type="number" min="0" max="40"></td>
+      <td><input id="p2-large-straight" type="number" min="0" max="40"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Yahtzee 2.0</td>
+      <td><input id="p1-yahtzee" type="number" min="0" max="51"></td>
+      <td><input id="p2-yahtzee" type="number" min="0" max="51"></td>
+    </tr>
+    <tr>
+      <td class="category-label">Chance</td>
+      <td><input id="p1-chance" type="number"></td>
+      <td><input id="p2-chance" type="number"></td>
+    </tr>
+
+    <tr>
+      <td><strong>Total du Bas</strong></td>
+      <td><input id="p1-lower-total" type="number" readonly></td>
+      <td><input id="p2-lower-total" type="number" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Grand Total</strong></td>
+      <td><input id="p1-grand-total" type="number" readonly></td>
+      <td><input id="p2-grand-total" type="number" readonly></td>
+    </tr>
+  </tbody>
+</table>
+
+    </section>
+
+    <table>
+        <tr>
+            <td width="110" height="110" align="center" valign="middle" style="border:1px solid black;">
+                <button id="die0" onclick="selectdie1()">
+                    <img src="/static/images/dice1.png" alt="1" width="100">
+                </button>
+            </td>
+            <td width="110" height="110" align="center" valign="middle" style="border:1px solid black;">
+                <button id="die1" onclick="selectdie2()">
+                    <img src="/static/images/dice2.png" alt="2" width="100">
+                </button>
+            </td>
+            <td width="110" height="110" align="center" valign="middle" style="border:1px solid black;">
+                <button id="die2" onclick="selectdie3()">
+                    <img src="/static/images/dice3.png" alt="3" width="100">
+                </button>
+            </td>
+            <td width="110" height="110" align="center" valign="middle" style="border:1px solid black;">
+                <button id="die3" onclick="selectdie4()">
+                    <img src="/static/images/dice4.png" alt="4" width="100">
+                </button>
+            </td>
+            <td width="110" height="110" align="center" valign="middle" style="border:1px solid black;">
+                <button id="die4" onclick="selectdie5()">
+                    <img src="/static/images/dice5.png" alt="5" width="100">
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <button onclick="rollDice()">Lancer les dés</button>
+
+    <a href="/rules">
+        <button>Rêgles</button>
+    </a>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

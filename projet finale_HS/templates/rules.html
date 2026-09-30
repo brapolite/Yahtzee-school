@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Règles du jeu</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Style pour rendre le dé cliquable mais discret */
+        .secret-dice {
+            cursor: pointer;
+            display: inline-block;
+            user-select: none;
+            transition: transform 0.2s ease;
+        }
+
+        /* Petit effet de rotation quand on passe la souris sur le dé */
+        .secret-dice:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* Assure que la liste reste bien alignée au centre */
+        ul {
+            display: inline-block;
+            text-align: left;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>
+<span class="secret-dice" onclick="window.location.href='https://streamable.com/lf027o'">🎲</span>
+
+        Règles de Yahtzee 2.0
+    </h1>
+
+    <section>
+        <ul>
+            <li>Roule 5 dés.</li>
+            <li>Tu peux seulement rouler 3 fois par tour.</li>
+            <li>Tu peux choisir de garder certains dés à chaque roule.</li>
+            <li>Choisis une catégorie par tour.</li>
+            <li>Chaque catégorie peut être utilisée seulement une fois.</li>
+        </ul>
+    </section>
+
+    <br>
+
+    <button onclick="window.location.href='/'">
+        ⬅ Retour
+    </button>
+
+</body>
+</html>
